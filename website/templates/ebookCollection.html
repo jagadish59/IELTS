@@ -1,0 +1,80 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Ebook Collection
+{% endblock title %}
+
+{% block body %}
+
+
+
+<div id="main-content" class="site-main clearfix">
+            <div id="content-wrap">
+                <div id="site-content" class="site-content clearfix">
+                    <div id="inner-content" class="inner-content-wrap">
+                       <div class="page-content">
+
+
+
+
+                           <div class="row-services">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <div class="themesflat-spacer clearfix" data-desktop="73" data-mobile="60" data-smobile="60"></div>
+                                            <div class="themesflat-spacer clearfix" data-desktop="40" data-mobile="35" data-smobile="35"></div>
+                                            <h4 style="text-align: center">OUR EBOOK COLLECTION</h4>
+                                            <div class="themesflat-project style-2 isotope-project has-margin mg15 data-effect clearfix">
+                                                {%for book in collection%}
+
+                                                <div class="project-item green villa">
+                                                    <div class="inner">
+                                                        <div class="thumb data-effect-item has-effect-icon w40 offset-v-19 offset-h-49">
+                                                            <img src="{% get_media_prefix %}/{{book.book}}" alt="Image">
+                                                            <div class="elm-link">
+
+                                                                <div class="elm-meta ">
+                                                                    <h5 class="heading text-white" style="text-transform: uppercase">{{book.book_name}}</h5>
+
+                                                            </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="">
+                                                            <h5 class="heading" style="text-transform: uppercase">{{book.book_name}}</h5>
+                                                            <span> {{book.description}} </span>
+
+
+                                                        </div>
+                                                            <a href="{% url 'get_book' book.id %}" class="themesflat-button bg-accent big"><span>GET BOOK</span></a>
+
+
+                                                    </div>
+                                                </div><!-- /.product-item -->
+                                                {%endfor%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+
+
+
+
+
+
+
+
+
+
+
+                       </div><!-- /.page-content -->
+                    </div><!-- /#inner-content -->
+                </div><!-- /#site-content -->
+            </div><!-- /#content-wrap -->
+        </div><!-- /#main-content -->
+{% endblock body %}

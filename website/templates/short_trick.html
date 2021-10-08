@@ -1,0 +1,100 @@
+
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Short-Tricks
+{% endblock title %}
+{% block body %}
+
+
+
+
+        <!-- Main Content -->
+                        <div class="themesflat-spacer clearfix" data-desktop="45" data-mobile="35" data-smobile="35"></div>
+        <div id="main-content" class="site-main clearfix">
+            <div id="content-wrap" class="container">
+                <div id="site-content" class="site-content clearfix">
+                    <div id="inner-content" class="inner-content-wrap">
+                        {%for tric in tricks%}
+
+
+
+
+
+
+                        <article class="hentry data-effect">
+
+                            <div class="post-content-wrap clearfix">
+                                <h2 class="post-title">
+                                    <span class="post-title-inner">
+                                        <a href="#">{{tric.Question}}</a>
+                                    </span>
+                                </h2><!-- /.post-title -->
+
+                                <div class="post-content post-excerpt">
+                                    <p>{{tric.ans}}</p>
+                                </div><!-- /.post-excerpt -->
+                            </div><!-- /.post-content-wrap -->
+                            <div class="post-media has-effect-icon offset-v-25 offset-h-24 data-effect-item clerafix">
+                                <img src="{% get_media_prefix %}/{{tric.file}}" alt="Image">
+                                <div class="post-calendar">
+                                    <span class="inner">
+                                        <span class="entry-calendar">
+                                            <span class="day">23</span>
+                                            <span class="month">MAY</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div><!-- /.post-media -->
+
+                        </article><!-- /.hentry -->
+
+                        <div class="themesflat-spacer clearfix" data-desktop="45" data-mobile="35" data-smobile="35"></div>
+                        {%endfor%}
+
+                        <form action="{% url 'short_trick'%}" method="post"> {% csrf_token %}
+                        <span class="wpcf7-form-control-wrap your-email">
+                                                        <input type="email" tabindex="3" id="email" name="email" value="" class="wpcf7-form-control" placeholder="Your Email*" required>
+                                                    </span>
+                    <input type="submit" value="GET daily tricks" class="submit wpcf7-form-control wpcf7-submit" id="submit" name="submit">
+                        </form>
+
+
+
+
+                        <div class="themesflat-pagination clearfix">
+                            <ul>
+                                <li><a href="{% url 'short_trick'%}" class="page-numbers prev"><span class="fa fa-angle-left"></span></a></li>
+                                <li><a href="{% url 'short_trick'%}" class="page-numbers current">1</a></li>
+                                <li><a href="{% url 'short_trick'%}" class="page-numbers">2</a></li>
+                                <li><a href="{% url 'short_trick'%}" class="page-numbers next"><span class="fa fa-angle-right"></span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="themesflat-spacer clearfix" data-desktop="45" data-mobile="35" data-smobile="35"></div>
+                    </div><!-- /#inner-content -->
+                </div><!-- /#site-content -->
+            </div><!-- /#content-wrap -->
+        </div><!-- /#main-content -->
+
+
+
+
+  {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+{%  block script %}
+
+    {% endblock script %}
+
+
+     {% endblock body %}
