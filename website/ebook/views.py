@@ -47,7 +47,7 @@ def newform(request,myid):
     pdf=False
 
 
-    host='127.0.0.1:8000'
+    host = request.get_host()
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,
         'amount': str(amount),
